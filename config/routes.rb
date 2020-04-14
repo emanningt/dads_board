@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :types
   resources :comments
   root 'sessions#welcome'
   get '/signup' => 'users#new'
