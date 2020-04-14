@@ -10,7 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_10_174018) do
+ActiveRecord::Schema.define(version: 2020_04_14_023548) do
+
+  create_table "comments", force: :cascade do |t|
+    t.integer "rating"
+    t.string "content"
+    t.integer "user_id", null: false
+    t.integer "idea_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["idea_id"], name: "index_comments_on_idea_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "ideas", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.integer "type_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["type_id"], name: "index_ideas_on_type_id"
+    t.index ["user_id"], name: "index_ideas_on_user_id"
+  end
+
+  create_table "types", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "first_name"
@@ -22,4 +50,8 @@ ActiveRecord::Schema.define(version: 2020_04_10_174018) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "comments", "ideas"
+  add_foreign_key "comments", "users"
+  add_foreign_key "ideas", "types"
+  add_foreign_key "ideas", "users"
 end
