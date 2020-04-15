@@ -11,6 +11,7 @@ class SessionsController < ApplicationController
             session[:user_id] = @user.id
             redirect_to user_path(@user)
         else 
+            flash[:error] = "Well your not very good at loging in. Lets try again..."
             redirect_to '/login'
         end 
     end 

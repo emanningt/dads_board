@@ -1,5 +1,7 @@
 <h1>Log in Page </h1>
 
+<p><%= flash[:error] %> </p>
+
 <%= form_for(:user) do |f| %>
 <div>
     <%= f.label :username %>
