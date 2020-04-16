@@ -7,10 +7,11 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
 
   delete '/logout' => 'sessions#destroy', method: :delete
-  
-  resources :users
-  resources :ideas
-  resources :types
+
   resources :comments
+  resources :ideas
+
+  resources :types
+  resources :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
