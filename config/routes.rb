@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   delete '/logout' => 'sessions#destroy', method: :delete
 
   resources :comments
-  resources :ideas
+  resources :ideas do 
+    resources :comments, only: [:new, :index]
+  end 
 
   resources :types
   resources :users

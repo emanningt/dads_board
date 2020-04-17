@@ -1,0 +1,15 @@
+<%= form_for(@comment) do |f| %>
+<div>
+    <%=f.label :rating %>
+    <%=f.text_field :rating %>
+</div>
+
+<div>
+    <%=f.label :content %>
+    <%=f.text_field :content %>
+</div>
+<%= f.hidden_field :idea_id %>
+
+<%= f.submit %>
+
+<% end %>
