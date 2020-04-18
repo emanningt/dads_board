@@ -7,4 +7,10 @@ class TypesController < ApplicationController
     def index
         @type = Type.all
     end 
+
+    def destroy
+        @type = Type.find(params[:id])
+        @type.destroy
+        redirect_to types_path, :notice => "Your post has been deleted."
+      end
 end

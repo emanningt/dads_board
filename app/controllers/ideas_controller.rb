@@ -24,6 +24,12 @@ class IdeasController < ApplicationController
         @idea.order_by_rating.includes(:type)
     end
 
+    def destroy
+        @idea = Idea.find(params[:id])
+        @idea.destroy
+        redirect_to ideas_path, :notice => "Your post has been deleted."
+      end
+
 
     private
 

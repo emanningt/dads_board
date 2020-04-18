@@ -1,5 +1,5 @@
 class Type < ApplicationRecord
-    has_many :ideas 
+    has_many :ideas
 
     validates :name, uniqueness: true
 

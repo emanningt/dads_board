@@ -2,4 +2,5 @@ All the diffrent types of ideas how to spend time with your kids<br>
 <h1>All Types of</h1>
 <% @type.each do |t|%>
     <%= t.name %><br>
+    <%# button_to "Delete", type_path(t.id), :confirm => "Are you sure?", :method => :delete, :class => "destroy"  %>
     <% end %>
