@@ -1,5 +1,7 @@
 idea index
 
 <% @idea.each do |i|%>
-    <%= i.title %><br>
+   <h2> <%= i.title %></h2><br>
+   <p><%= i.description %> </p><br>
+   <%= link_to "Comment", new_idea_comment_path(i.id) %>
     <% end %>

@@ -1,0 +1,10 @@
+<h1>All the comments</h1>
+
+<ul>
+<% @comments.each do |c|  %>
+    <h5> <%= c.idea.title %> </h5>
+   <li> Rating - <%= c.rating %></li>
+    <h6>Comment</h6>
+    <%= c.content %>
+<% end %>
+</ul>
