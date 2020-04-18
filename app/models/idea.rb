@@ -6,4 +6,7 @@ class Idea < ApplicationRecord
   has_many :users, through: :reviews
 
   accepts_nested_attributes_for :type 
+
+  validates :title, presence: true
+  validates :description, presence: true
 end

@@ -18,7 +18,11 @@ class CommentsController < ApplicationController
     end 
 
     def index
+        if set_idea
+            @comments = @idea.comments
+        else 
         @comments = Comment.all
+        end 
     end 
 
     private

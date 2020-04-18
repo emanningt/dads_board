@@ -1,5 +1,7 @@
 Hey new idea page nicely done
 
+<%= render partial: 'layouts/errors', locals: {object: @idea}%>
+
 <%= form_for(@idea) do |f| %>
     <div>
     <%= f.label :title %>
