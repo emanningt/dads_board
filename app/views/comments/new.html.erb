@@ -1,10 +1,15 @@
 <h1>Whats you comment for: <%= @comment.idea.title %> that was written by <%= @comment.idea.user.username  %> </h1>
 <%= render partial: 'layouts/errors', locals: {object: @comment}%>
+
 <%= form_for(@comment) do |f| %>
+<%  params[:idea_id]%>
+    <%= f.hidden_field :idea_id %>
+   
 <div>
     <%=f.label :rating %><br>
     <%=f.number_field :rating, min:0, max:5 %>
 </div><br>
+
 
 <div>
     <%=f.label "Comment" %><br>

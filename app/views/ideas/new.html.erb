@@ -4,23 +4,25 @@ Hey new idea page nicely done
 
 <%= form_for(@idea) do |f| %>
     <div>
-    <%= f.label :title %>
+    <%= f.label :title %><br>
     <%= f.text_field :title %><br>    
     </div>
     <div>
-    <%= f.label :description %>
+    <%= f.label :description %><br>
     <%= f.text_field :description %><br>
     </div>
+    
     <p> Which type of idea does this belong to? </p>
-        <%= f.collection_select :type_id, Type.all, :id, :name %>
+        <%= f.collection_select :type_id, Type.alpha, :id, :name, {:prompt => "Choose a type this belongs to"}%>
 
     <p>You could create your own type if you dont see one you like.<p>
+    
     <div>
         <%= f.fields_for :type do |i| %>
-            <%= i.label :name %>
+            <%= i.label "Give your name a type" %><br>
             <%= i.text_field :name %>
         <% end %>
-        </div>
+        </div><br>
     <%= f.submit%>
 
     <% end %>

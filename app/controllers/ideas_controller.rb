@@ -21,6 +21,7 @@ class IdeasController < ApplicationController
 
     def index
         @idea = Idea.all
+        @idea.order_by_rating.includes(:type)
     end
 
 
