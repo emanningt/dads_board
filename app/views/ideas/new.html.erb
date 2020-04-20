@@ -13,14 +13,14 @@ Hey new idea page nicely done
     </div>
     
     <p> Which type of idea does this belong to? </p>
-        <%= f.collection_select :type_id, Type.alpha, Type.uniq, :id, :name, {:prompt => "Choose a type this belongs to"}%>
+        <%= f.collection_select :type_id, Type.alpha, :id, :name, {:prompt => "Choose a type this belongs to"}%>
 
     <p>You could create your own type if you dont see one you like.<p>
     
     <div>
         <%= f.fields_for :type do |i| %>
             <%= i.label "Give your name a type" %><br>
-            <%= i.text_field :name, Type.uniq%>
+            <%= i.text_field :name %>
         <% end %>
         </div><br>
     <%= f.submit%>

@@ -1,6 +1,6 @@
 class User < ApplicationRecord
     has_many :comments
-    has_many :commented_ideas, through: :reviews, source: :idea
+    has_many :commented_ideas, through: :comments, source: :idea
     has_many :ideas
 
     validates :email, uniqueness: true
