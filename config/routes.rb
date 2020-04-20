@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   get '/logout' => 'sessions#destroy', method: :delete
 
+  get '/auth/:provider/callback' => 'sessions#create'
+
   resources :comments
   resources :ideas do 
     resources :comments, only: [:new, :index]

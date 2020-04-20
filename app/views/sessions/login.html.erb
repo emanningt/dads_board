@@ -4,8 +4,8 @@
 
 <%= form_for(:user) do |f| %>
 <div>
-    <%= f.label :username %>
-    <%= f.text_field :username %>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
 </div>    
 
 <div>
@@ -15,3 +15,5 @@
     <%= f.submit "Log In"%>
 
     <% end %>
+
+    <%= link_to 'GitHub Login', '/auth/github' %>
