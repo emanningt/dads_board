@@ -7,3 +7,5 @@ Idea show page <br>
 <p>
 
 <%= @idea.user.username %>
+
+<%= button_to "Delete", idea_path(@idea.id), :method => :delete, :class => "destroy" if @idea.user == current_user %><br>

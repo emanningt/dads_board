@@ -3,7 +3,8 @@
 <% @idea.each do |i|%>
    <h2> <%= i.title %></h2><br>
    <p><%= i.description %> </p><br>
-   <%= button_to "Delete", idea_path(i.id), :confirm => "Are you sure?", :method => :delete, :class => "destroy" %>
+   <%= i.user.username %>
+   <%= button_to "Delete", idea_path(i.id), :method => :delete, :class => "destroy" if i.user == current_user %><br>
    <%= link_to "Comment", new_idea_comment_path(i.id) %>
     <% end %>
     </ul>

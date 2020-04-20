@@ -1,5 +1,7 @@
 class TypesController < ApplicationController
 
+    before_action :redirect_if_not_logged_in
+
     def new
         @type = Type.new
     end 

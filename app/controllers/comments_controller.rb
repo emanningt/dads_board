@@ -1,4 +1,7 @@
 class CommentsController < ApplicationController
+    before_action :redirect_if_not_logged_in
+
+
     def new
        set_idea
        @comment = @idea.comments.build

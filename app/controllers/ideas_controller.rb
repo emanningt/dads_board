@@ -1,5 +1,7 @@
 class IdeasController < ApplicationController
 
+    before_action :redirect_if_not_logged_in
+
     def new
         @idea = Idea.new
         @idea.build_type
