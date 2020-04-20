@@ -7,23 +7,11 @@ class SessionsController < ApplicationController
 
     def create
         if auth_hash = request.env["omniauth.auth"]
-
-            oauth_nickname = request.env["omniauth.auth"]["info"]["nickname"]
-            if @user = User.find_by(:username => oauth_nickname)
-                session[:user_id] = @user.id
-                redirect_to user_path(@user)
-            else 
-                @user = User.create(:username => oauth_nickname, :password => SecureRandom.hex)
-                if @user.save
-                    session[:user_id] = @user.id
-                    redirect_to user_path(@user)
-                else 
-                    raise @user.errors.full_messages.inspect
-                end 
-            end 
-
+         @user = User.find_or_create_by_omniauth(auth_hash)
+         session[:user_id] = @user.id
+         redirect_to user_path(@user)
         else 
-            @user = User.find_by(email: params[:user][:email])
+            @user = User.find_by(username: params[:user][:username])
             if @user && @user.authenticate(params[:user][:password])
                 session[:user_id] = @user.id
                 redirect_to user_path(@user)
@@ -43,3 +31,18 @@ class SessionsController < ApplicationController
     end 
 
 end
+
+
+# oauth_nickname = request.env["omniauth.auth"]["info"]["nickname"]
+# if @user = User.find_by(:username => oauth_nickname)
+#     session[:user_id] = @user.id
+#     redirect_to user_path(@user)
+# else 
+#     @user = User.create(:username => oauth_nickname, :password => SecureRandom.hex)
+#     if @user.save
+#         session[:user_id] = @user.id
+#         redirect_to user_path(@user)
+#     else 
+#         raise @user.errors.full_messages.inspect
+#     end 
+# end 
