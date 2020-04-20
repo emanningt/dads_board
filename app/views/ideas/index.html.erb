@@ -1,10 +1,29 @@
 <h2>Check out all the ideas here. Also leave a comment and rating on the ones you like most! </h2>
 <ul>
+
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
 <% @idea.each do |i|%>
-   <h2> <%= i.title %></h2><br>
-   <p><%= i.description %> </p><br>
-   <%= i.user.username %>
-   <%= button_to "Delete", idea_path(i.id), :method => :delete, :class => "destroy" if i.user == current_user %><br>
+<div class="container">
+  <h1><%= i.title %></h1>
+  <blockquote>
+    <p><%= i.description %></p>
+    <footer> <%= i.user.username %></footer>
+  </blockquote>
+  <%= button_to "Delete", idea_path(i.id), :method => :delete, :class => "destroy" if i.user == current_user %><br>
    <%= link_to "Comment", new_idea_comment_path(i.id) %>
-    <% end %>
-    </ul>
+  <% end %>
+</div>
+
+</body>
+</html>
