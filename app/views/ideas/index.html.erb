@@ -15,7 +15,9 @@
 
 <% @idea.each do |i|%>
 <div class="container">
-  <h1><%= i.title %></h1>
+  <h1><%=i.title %></h1>
+  <h3> <%= i.type.name %></h3>
+  <a href="/types"><%= i.type.name %></h3></a>
   <blockquote>
     <p><%= i.description %></p>
     <footer> <%= i.user.username %></footer>
@@ -24,6 +26,7 @@
    <%= link_to "Comment", new_idea_comment_path(i.id) %>
   <% end %>
 </div>
+
 
 </body>
 </html>

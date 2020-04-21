@@ -3,6 +3,7 @@ class User < ApplicationRecord
     has_many :commented_ideas, through: :comments, source: :idea
     has_many :ideas
 
+
     validates :email, uniqueness: true
     validates :username, presence: true, uniqueness: true
     has_secure_password

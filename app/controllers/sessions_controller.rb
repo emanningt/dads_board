@@ -31,18 +31,3 @@ class SessionsController < ApplicationController
     end 
 
 end
-
-
-# oauth_nickname = request.env["omniauth.auth"]["info"]["nickname"]
-# if @user = User.find_by(:username => oauth_nickname)
-#     session[:user_id] = @user.id
-#     redirect_to user_path(@user)
-# else 
-#     @user = User.create(:username => oauth_nickname, :password => SecureRandom.hex)
-#     if @user.save
-#         session[:user_id] = @user.id
-#         redirect_to user_path(@user)
-#     else 
-#         raise @user.errors.full_messages.inspect
-#     end 
-# end 

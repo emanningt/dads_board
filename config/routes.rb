@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
 
+  post '/users/:id' => 'users#show'
+
   get '/logout' => 'sessions#destroy', method: :delete
 
   get '/auth/:provider/callback' => 'sessions#create'
