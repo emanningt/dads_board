@@ -18,7 +18,7 @@ class IdeasController < ApplicationController
     end 
 
     def show
-        @idea = Idea.find(params[:id])
+        @idea = Idea.find_by_id(params[:id])
     end 
 
     def index
@@ -33,8 +33,20 @@ class IdeasController < ApplicationController
       end
 
       def edit
-
-      end 
+        @idea = Idea.find_by_id(params[:id])
+        redirect_to idea_path if !@idea || @idea.user != current_user
+        @idea.build_type if !@idea.type
+      end
+    
+      def update
+         @idea = Idea.find_by(id: params[:id])
+         redirect_to ideas_path if !@idea || @idea.user != current_user
+        if @idea.update(idea_params)
+          redirect_to idea_path(@idea)
+        else
+          render :edit
+        end
+      end
 
     private
 

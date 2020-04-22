@@ -1,6 +1,19 @@
 <h1>Edit: <%= @idea.title %></h1>
 
-<%= from_for(@idea) do |i| %>
-    <%=i.label %>
+<%= form_for(@idea) do |f| %>
+    <div>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %><br>    
+    </div>
+    <div>
+    <%= f.label :description %><br>
+    <%= f.text_field :description %><br>
+    </div>
+
+    
+    
+    <p> Which type of idea does this belong to? </p>
+        <%= f.collection_select :type_id, Type.alpha, :id, :name, {:prompt => "Choose a type this belongs to"}%>
+    <%= f.submit%>
 
     <% end %>
