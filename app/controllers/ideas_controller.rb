@@ -32,6 +32,9 @@ class IdeasController < ApplicationController
         redirect_to ideas_path, :notice => "Your post has been deleted."
       end
 
+      def edit
+
+      end 
 
     private
 

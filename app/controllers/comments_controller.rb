@@ -17,7 +17,6 @@ class CommentsController < ApplicationController
     end     
 
     def show
-        @comment = Comment.find_by_id(params[:id])
     end 
 
     def index
@@ -33,6 +32,14 @@ class CommentsController < ApplicationController
     def set_idea
         @idea = Idea.find_by_id(params[:idea_id])
     end 
+
+    def set_comment
+        @comment = Comment.find_by(id: params[:id])
+        if !@comment
+          flash[:message] = "Comment was not found"
+          redirect_to comments_path
+        end
+      end
 
     def comment_params
         params.require(:comment).permit(:rating, :content, :idea_id)

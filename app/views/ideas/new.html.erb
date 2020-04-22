@@ -11,6 +11,8 @@ Hey new idea page nicely done
     <%= f.label :description %><br>
     <%= f.text_field :description %><br>
     </div>
+
+    
     
     <p> Which type of idea does this belong to? </p>
         <%= f.collection_select :type_id, Type.alpha, :id, :name, {:prompt => "Choose a type this belongs to"}%>
