@@ -9,7 +9,7 @@ class Idea < ApplicationRecord
 
   scope :order_by_rating, -> {joins(:comments).group(:id).order('avg(rating)')}
 
-  validates :title, presence: true,
+  validates :title, presence: true
   validates :description, presence: true
   validates :type, uniqueness: true, presence: true
 
