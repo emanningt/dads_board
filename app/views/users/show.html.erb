@@ -18,6 +18,7 @@
   <blockquote>
     <p> <%= u.description %></p>
     <footer><%= u.created_at %></footer>
+    <%= button_to "Delete", idea_path(u.id), :method => :delete, :class => "destroy" if @user == current_user %><br>
   </blockquote>
    <% end %>
 </div>

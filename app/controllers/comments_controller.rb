@@ -17,6 +17,7 @@ class CommentsController < ApplicationController
     end     
 
     def show
+        @comments = Comment.find_by_id(params[:id])
     end 
 
     def index
@@ -26,6 +27,23 @@ class CommentsController < ApplicationController
         @comments = Comment.all
         end 
     end 
+
+    def destroy
+        @comment = Comment.find_by_id(params[:id])
+        @comment.destroy
+        redirect_to comment_path, :notice => "Your post has been deleted."
+      end
+
+      def edit
+      end
+    
+      def update
+        if @comment.update(comment_params)
+          redirect_to comment_path(@comment)
+        else
+          render :edit
+        end
+      end
 
     private
 

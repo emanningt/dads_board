@@ -1,5 +1,9 @@
 <h2>Your Comment </h2> 
 <h5>rating</h5>
-<%= @comment.rating %><br>
-<h5>Comment</h5>
-<%= @comment.content %>
+
+    <%= @comments.rating %>
+    <%= @comments.content %>
+    <%= @comments.user.username %>
+    <%= button_to "Delete", comment_path(:id), :method => :delete, :class => "destroy" if @comments.user == current_user %><br>
+
+

@@ -3,7 +3,7 @@ class Idea < ApplicationRecord
   belongs_to :user
 
   has_many :comments, dependent: :destroy
-  has_many :users, through: :reviews
+  has_many :users, through: :comments
 
   accepts_nested_attributes_for :type 
 
@@ -11,10 +11,11 @@ class Idea < ApplicationRecord
 
   validates :title, presence: true
   validates :description, presence: true
-  validates :type, uniqueness: true, presence: true
+  validates :type, presence: true
 
  def self.alpha
   order(:idea)
  end 
 
+ 
 end

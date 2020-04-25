@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   resources :comments
   resources :ideas do 
-    resources :comments, only: [:new, :index]
+    resources :comments, only: [:new, :index, :show]
   end 
 
   resources :types
