@@ -15,16 +15,17 @@
 
 <% @idea.each do |i|%>
 <div class="container">
-  <h1><%=i.title %></h1>
+  <h2><%=i.title %></h2>
   <h3> <a href=<%= types_path %>><%= i.type.name %></h3></a>
   <blockquote>
     <p><%= i.description %></p>
     <footer> <%= i.user.username %></footer>
   </blockquote>
   <%= button_to "Delete", idea_path(i.id), :method => :delete, :class => "destroy" if i.user == current_user %><br>
-   <%= link_to "Comment", new_idea_comment_path(i.id) %>
+  <%= button_to "Edit Idea", edit_idea_path(i)%><br>
+   <%= link_to "Comment", new_idea_comment_path(i.id) %><br>
+   <%= link_to "All Comments for this post", idea_comments_path(i.id) %>
    <% if i.user == current_user %>
-<h4><%= link_to "Edit Idea", edit_idea_path(i)%></h4>
   <% end %>
   <% end %>
 </div>

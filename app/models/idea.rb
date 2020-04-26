@@ -1,5 +1,5 @@
 class Idea < ApplicationRecord
-  belongs_to :type, dependent: :destroy
+  belongs_to :type
   belongs_to :user
 
   has_many :comments, dependent: :destroy

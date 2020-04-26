@@ -1,7 +1,18 @@
 class CommentsController < ApplicationController
     before_action :redirect_if_not_logged_in
 
-
+def index
+        if params[:idea_id]
+            if set_idea
+            @comments = @idea.comments
+            else
+              flash[:message] = "That idea doesn't exist. "
+              redirect_to ideas_path
+            end 
+        else 
+        @comments = Comment.all
+        end 
+    end 
     def new
        set_idea
        @comment = @idea.comments.build
@@ -18,14 +29,6 @@ class CommentsController < ApplicationController
 
     def show
         @comments = Comment.find_by_id(params[:id])
-    end 
-
-    def index
-        if set_idea
-            @comments = @idea.comments
-        else 
-        @comments = Comment.all
-        end 
     end 
 
     def destroy

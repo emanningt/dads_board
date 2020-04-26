@@ -25,7 +25,6 @@
       <li><a href=<%= ideas_path %>>All Ideas</a></li>
       <li><a href="<%= new_idea_path %>">New Ideas</a></li>
       <li><a href="<%= types_path %>">Type Categories</a></li>
-
       
             
           </ul>
@@ -52,9 +51,12 @@
 <div class="container">
   <div class="jumbotron">
     
+    <% if flash[:message]%>
+    <%= flash[:message] %>
+    <% end%>
     
 </body>
-  <body>
+  <body> 
     <%= yield %>
   </body>
 </html>

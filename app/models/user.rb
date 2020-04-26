@@ -1,7 +1,7 @@
 class User < ApplicationRecord
     has_many :comments
     has_many :commented_ideas, through: :comments, source: :idea
-    has_many :ideas
+    has_many :ideas, dependent: :destroy
 
     validates :first_name,  presence: true
     validates :first_name,  presence: true

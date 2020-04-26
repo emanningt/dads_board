@@ -14,10 +14,10 @@ Rails.application.routes.draw do
 
   resources :comments
   resources :ideas do 
-    resources :comments, only: [:new, :index, :show]
+    resources :comments, only: [:new, :index, :show, :create]
   end 
 
   resources :types
-  resources :users, only: [:new, :show]
+  resources :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
