@@ -16,16 +16,20 @@
 <% @idea.each do |i|%>
 <div class="container">
   <h2><%=i.title %></h2>
+  <a href=<%= idea_path(@idea) %>><%= i.title %></a>
   <h3> <a href=<%= types_path %>><%= i.type.name %></h3></a>
   <blockquote>
     <p><%= i.description %></p>
     <footer> <%= i.user.username %></footer>
   </blockquote>
-  <%= button_to "Delete", idea_path(i.id), :method => :delete, :class => "destroy" if i.user == current_user %><br>
-  <%= button_to "Edit Idea", edit_idea_path(i)%><br>
+  
    <%= link_to "Comment", new_idea_comment_path(i.id) %><br>
    <%= link_to "All Comments for this post", idea_comments_path(i.id) %>
    <% if i.user == current_user %>
+   <p>
+   <%= button_to "Delete", idea_path(i.id), :method => :delete, :class => "destroy" %><br>
+  <%= link_to "Edit Idea", edit_idea_path(i)%>
+  </p>
   <% end %>
   <% end %>
 </div>
