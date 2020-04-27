@@ -29,7 +29,7 @@ class IdeasController < ApplicationController
     def destroy
         @idea = Idea.find(params[:id])
         @idea.destroy
-        redirect_to ideas_path, :notice => "Your post has been deleted."
+        redirect_to ideas_path
       end
 
       def edit
