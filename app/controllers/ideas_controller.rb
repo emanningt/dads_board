@@ -47,7 +47,7 @@ class IdeasController < ApplicationController
       end
 
       def titles 
-        @idea = Idea.all.abc
+        @idea = Idea.all.alpha
       end
 
     private
