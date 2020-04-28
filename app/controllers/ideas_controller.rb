@@ -1,6 +1,7 @@
 class IdeasController < ApplicationController
 
     before_action :redirect_if_not_logged_in
+    before_action :set_idea, only: [:show, :edit, :destroy]
 
     def new
         @idea = Idea.new
@@ -18,7 +19,6 @@ class IdeasController < ApplicationController
     end 
 
     def show
-        @idea = Idea.find_by_id(params[:id])
     end 
 
     def index
@@ -27,13 +27,11 @@ class IdeasController < ApplicationController
     end
 
     def destroy
-        @idea = Idea.find(params[:id])
         @idea.destroy
         redirect_to ideas_path
       end
 
       def edit
-        @idea = Idea.find_by_id(params[:id])
         redirect_to idea_path if !@idea || @idea.user != current_user
         @idea.build_type if !@idea.type
       end
@@ -48,7 +46,15 @@ class IdeasController < ApplicationController
         end
       end
 
+      def titles 
+        @idea = Idea.all.abc
+      end
+
     private
+
+    def set_idea
+      @idea = Idea.find_by_id(params[:id])
+    end 
 
     def idea_params
         params.require(:idea).permit(:title, :description, :type_id, type_attributes: [:name])
