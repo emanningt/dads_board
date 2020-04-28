@@ -14,7 +14,7 @@ class Idea < ApplicationRecord
   validates :type, presence: true
 
  def self.alpha
-  order(:idea)
+  order(:title)
  end 
 
  
