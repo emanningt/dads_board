@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   get '/auth/:provider/callback' => 'sessions#create'
 
+  get '/titles' => 'ideas#titles'
+
   resources :comments
   resources :ideas do 
     resources :comments, only: [:new, :index, :show, :create]
