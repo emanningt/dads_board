@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
     before_action :redirect_if_not_logged_in
+    before_action :set_comment, only: [:show, :destroy]
 
 def index
         if params[:idea_id]
@@ -28,11 +29,11 @@ def index
     end     
 
     def show
-        @comments = Comment.find_by_id(params[:id])
+        
     end 
 
     def destroy
-        @comment = Comment.find_by_id(params[:id])
+        
         @comment.destroy
         redirect_to comment_path, :notice => "Your post has been deleted."
       end
